@@ -126,7 +126,7 @@ function BorrowingPage({ apiKey, setShowApiInput }) {
         {/* ---------- PAGE CONTENT ---------- */}
         <div className="max-w-7xl mx-auto px-6 py-16 relative">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold">🏦 Borrower Dashboard</h2>
+            <h2 className="text-3xl font-bold">Borrower Dashboard</h2>
             <button 
               onClick={() => navigate('/lending')}
               className="px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded hover:border-blue-400 hover:shadow-[0_0_25px_rgba(96,165,250,0.4)] transition-all"

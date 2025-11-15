@@ -6,13 +6,13 @@ function AIAdvisor({ apiKey, setShowApiInput, role, positionData }) {
   
     const handleAIAnalysis = async () => {
       if (!apiKey.trim()) {
-        setAiOutput("⚠️ Please enter your Groq API key first.\n\nGet FREE API key from: https://console.groq.com/keys\n\n(Takes 30 seconds to sign up!)");
+        setAiOutput("Please enter your Groq API key first.\n\nGet FREE API key from: https://console.groq.com/keys\n\n(Takes 30 seconds to sign up!)");
         setShowApiInput(true);
         return;
       }
   
       setAiLoading(true);
-      setAiOutput(`🤖 AI is analyzing your ${role} position...`);
+      setAiOutput(`AI is analyzing your ${role} position...`);
   
       let prompt = "";
       if (role === "lender") {
@@ -90,7 +90,7 @@ function AIAdvisor({ apiKey, setShowApiInput, role, positionData }) {
         const data = await response.json();
         const analysis = data.choices[0]?.message?.content || "No analysis generated.";
         
-        setAiOutput(`🤖 AI ${role === "lender" ? "Yield" : "Risk"} Analysis:\n\n${analysis}`);
+        setAiOutput(` AI ${role === "lender" ? "Yield" : "Risk"} Analysis:\n\n${analysis}`);
       } catch (error) {
         console.error("AI Error:", error);
         setAiOutput(`❌ Error: ${error.message}\n\nTroubleshooting:\n1. Check your API key is correct\n2. Ensure you have Groq credits\n3. Get a free key at: https://console.groq.com/keys`);
@@ -100,40 +100,52 @@ function AIAdvisor({ apiKey, setShowApiInput, role, positionData }) {
     };
   
     return (
-      <aside className="p-4 border rounded">
-        <h4 className="font-semibold mb-3">🤖 AI {role === "lender" ? "Yield" : "Risk"} Advisor</h4>
-        <p className="text-xs text-gray-600 mb-3">
-          Ask the AI for {role === "lender" ? "yield optimization" : "risk management"} advice.
-        </p>
-  
-        <textarea 
-          value={aiInput} 
-          onChange={(e) => setAiInput(e.target.value)} 
-          className="w-full p-2 border mb-3 rounded" 
-          rows={4} 
-          placeholder={role === "lender" 
-            ? "e.g. Which asset should I supply more?" 
-            : "e.g. Should I reduce my borrow? Is my position safe?"}
-        />
-        
-        <button 
-          className="w-full p-2 bg-black text-white mb-3 rounded disabled:bg-gray-400" 
-          onClick={handleAIAnalysis} 
-          disabled={aiLoading}
-        >
-          {aiLoading ? '🔄 Analyzing…' : '🚀 Analyze Position'}
-        </button>
-  
-        <div className="p-3 border rounded min-h-[120px] text-sm whitespace-pre-wrap bg-gray-50">
-          {aiOutput || '💡 AI analysis will appear here after you click "Analyze Position".'}
-        </div>
-  
-        <div className="mt-4 text-xs text-gray-500 space-y-1">
-          <div>✨ Powered by Groq (Super Fast AI)</div>
-          <div>🔒 Your API key stays in your browser</div>
-          <div>🆓 Free tier: 30 requests/min</div>
-        </div>
-      </aside>
+     <aside className="p-4 rounded-xl border border-[#2a2a2a] bg-[#0d0d0f] text-gray-200">
+
+  <h4 className="font-semibold mb-3 text-[15px] flex items-center gap-2">
+    AI {role === "lender" ? "Yield" : "Risk"} Advisor
+  </h4>
+
+  <p className="text-xs text-gray-400 mb-3">
+    Ask the AI for {role === "lender" ? "yield optimization" : "risk management"} advice.
+  </p>
+
+  <textarea
+    value={aiInput}
+    onChange={(e) => setAiInput(e.target.value)}
+    className="w-full p-3 bg-[#111114] text-gray-300 border border-[#2e2e2e] rounded-lg 
+               placeholder-gray-500 focus:border-purple-500 outline-none"
+    rows={4}
+    placeholder={
+      role === "lender"
+        ? "e.g. Which asset should I supply more?"
+        : "e.g. Should I reduce my borrow? Is my position safe?"
+    }
+  />
+
+  <button
+    className="w-full p-3 mt-3 bg-[#8257ff] hover:bg-[#6d41f8] text-white text-sm font-medium 
+               rounded-lg transition disabled:bg-gray-600"
+    onClick={handleAIAnalysis}
+    disabled={aiLoading}
+  >
+    {aiLoading ? "Analyzing…" : "Analyze Position"}
+  </button>
+
+  <div className="p-3 mt-4 bg-[#121217] text-gray-300 border border-[#27272a] rounded-lg 
+                  min-h-[120px] text-sm whitespace-pre-wrap">
+    {aiOutput || 'AI analysis.'}
+  </div>
+
+  <div className="mt-4 text-[11px] text-gray-500 space-y-1 border-t border-[#1a1a1d] pt-3">
+    <div>Powered by Groq</div>
+    <div>Your API key stays in your browser</div>
+    <div>Free tier: 30 requests/min</div>
+  </div>
+
+</aside>
+
+
     );
   }
   export default AIAdvisor;

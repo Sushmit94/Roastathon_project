@@ -29,7 +29,7 @@ function HomePage() {
 
   {/* MAIN TITLE */}
   <h1 className="text-[4rem] md:text-[5rem] font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
-     DeFi Lending and Borrowing<br />Analyzed by AI
+     DeFi Lending and Borrowing<br />Assisted by AI
   </h1>
 
   {/* SUBTITLE */}

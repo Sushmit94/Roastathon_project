@@ -71,7 +71,7 @@ function LendingPage({ apiKey, setShowApiInput }) {
         {/* ---------- PAGE CONTENT ---------- */}
         <div className="max-w-7xl mx-auto px-6 py-16 relative">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold">💰 Lender Dashboard</h2>
+            <h2 className="text-3xl font-bold"> Lender Dashboard</h2>
             <button 
               onClick={() => navigate('/borrowing')}
               className="px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(99,102,241,0.4)] transition-all"
