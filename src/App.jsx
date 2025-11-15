@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white text-black p-6 font-sans">
+     
         <Navigation 
           apiKey={apiKey} 
           setApiKey={setApiKey}
@@ -32,10 +32,7 @@ export default function App() {
           <Route path="/borrowing" element={<BorrowingPage apiKey={apiKey} setShowApiInput={setShowApiInput} />} />
         </Routes>
 
-        <footer className="mt-10 text-center text-xs text-gray-500">
-          Demo: Educational only — not financial advice.
-        </footer>
-      </div>
+       
     </Router>
   );
 }
